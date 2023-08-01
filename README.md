@@ -16,7 +16,7 @@ note : in this project, I use SQL SERVER as the database, Spring boot 3.1.1, and
 If you just need to test/run the whole project, please execute initiate_query.sql (in Query foler) first on your sql server app.
 Then you have to adjust application.properties.
 
-https://github.com/alkadarr/springboot-jwt-auth-basic-code/blob/cb4714c9cdaebb2e9e7a01a50c4a3c60620c125f/src/main/resources/application.properties#L4C1-L9C1
+https://github.com/alkadarr/springboot-jwt-auth-basic-code/blob/cb4714c9cdaebb2e9e7a01a50c4a3c60620c125f/src/main/resources/application.properties#L4-L9
 
 replace it to your datasource information.
 
