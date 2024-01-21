@@ -11,8 +11,8 @@
 	<groupId>com.example</groupId>
 	<artifactId>springboot-jwt-auth-basic-code</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>simple spring jwt authentication basic code</name>
-	<description>simple basic code initialization for backend service with jwt authentication</description>
+	<name>spring warehouse cms service</name>
+	<description>application for managing warehouse storage information across branch stores using a Case Management System (CMS)</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
