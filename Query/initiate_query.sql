@@ -1,25 +1,10 @@
-IF NOT EXISTS(SELECT * FROM sys.databases WHERE name = 'PORTO_DB')
+IF NOT EXISTS(SELECT * FROM sys.databases WHERE name = 'WAREHOUSE_CMS')
 BEGIN
-    CREATE DATABASE [PORTO_DB]
+    CREATE DATABASE [WAREHOUSE_CMS]
 END
-
 GO
 
-USE [PORTO_DB]
-
-GO
-
-IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='Product' and xtype='U')
-BEGIN
-    CREATE TABLE [Product] (
-        id BIGINT PRIMARY KEY IDENTITY (1, 1),
-		product_name VARCHAR(250) NOT NULL,
-		created_date DATETIME NOT NULL,
-		created_by VARCHAR(50) NULL,
-		updated_date DATETIME NULL,
-		updated_by VARCHAR(50) NULL
-    )
-END
+USE [WAREHOUSE_CMS]
 
 GO
 
@@ -62,24 +47,18 @@ CREATE TABLE [dbo].[User_Role](
 
 GO
 
-INSERT INTO [Product] values('Aqua',GETDATE(),'SYSTEM',null,null)
-INSERT INTO [Product] values('Aquades',GETDATE(),'SYSTEM',null,null)
-INSERT INTO [Product] values('Le Minerale',GETDATE(),'SYSTEM',null,null)
-INSERT INTO [Product] values('Sprit',GETDATE(),'SYSTEM',null,null)
-INSERT INTO [Product] values('Coca-Cola',GETDATE(),'SYSTEM',null,null)
-INSERT INTO [Product] values('Fanta',GETDATE(),'SYSTEM',null,null)
-INSERT INTO [Product] values('Vit',GETDATE(),'SYSTEM',null,null)
-INSERT INTO [Product] values('Pure Life',GETDATE(),'SYSTEM',null,null)
-
-GO
-
 INSERT INTO [dbo].[Role]
            ([created_by]
            ,[created_date]
            ,[name])
-VALUES 
+VALUES
 ('SYSTEM',GETDATE(),'ROLE_SUPER_ADMIN'),
 ('SYSTEM',GETDATE(),'ROLE_ADMIN'),
-('SYSTEM',GETDATE(),'ROLE_CUSTOMER')
+('SYSTEM',GETDATE(),'ROLE_MANAGER'),
+('SYSTEM',GETDATE(),'ROLE_CLERK'),
+('SYSTEM',GETDATE(),'ROLE_AUDITOR'),
+('SYSTEM',GETDATE(),'ROLE_WAREHOUSE_STAFF'),
+('SYSTEM',GETDATE(),'ROLE_SEARCH_EXPORT')
 
-GO
+
+
