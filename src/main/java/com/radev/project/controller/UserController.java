@@ -26,6 +26,10 @@ public class UserController {
     public List<?> findAll() {
         return crudService.findAll();
     }
+    @GetMapping("/{userId}")
+    public User findById(@PathVariable("userId") Long userId){
+        return (User) crudService.findById(userId);
+    }
     @GetMapping("/paging")
     public PageTemplate getMoviesPaging(
             @RequestParam(name = "search",defaultValue = "",required = false) String search,

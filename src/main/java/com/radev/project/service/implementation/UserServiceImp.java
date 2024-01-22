@@ -38,6 +38,13 @@ public class UserServiceImp implements CrudService,UserService {
     public List<?> findAll() {
         return userRepository.findAll();
     }
+
+    @Override
+    public Object findById(Object id) {
+        return userRepository.findById((Long) id)
+                .orElseThrow(() -> new EntityNotFoundException("User not found with id: " + id));
+    }
+
     @Override
     public Object create(Object payload) {
         UserRegister userRegister = (UserRegister) payload;
@@ -99,9 +106,9 @@ public class UserServiceImp implements CrudService,UserService {
         return userRepository.save(user);
     }
     @Override
-    public void delete(Long userId) {
-        User user = userRepository.findById(userId)
-                .orElseThrow(() -> new IllegalArgumentException("User not found with id: " + userId));
+    public void delete(Object userId) {
+        User user = userRepository.findById((Long) userId)
+                .orElseThrow(() -> new EntityNotFoundException("User not found with id: " + userId));
         userRepository.delete(user);
     }
     @Override

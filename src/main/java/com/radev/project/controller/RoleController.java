@@ -1,5 +1,6 @@
 package com.radev.project.controller;
 
+import com.radev.project.entity.Role;
 import com.radev.project.service.abstraction.CrudService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -16,5 +17,9 @@ public class RoleController {
     @GetMapping
     public List<?> findAll() {
         return crudService.findAll();
+    }
+    @GetMapping("/{roleId}")
+    public Role findById(@PathVariable("roleId") Long userId){
+        return (Role) crudService.findById(userId);
     }
 }
