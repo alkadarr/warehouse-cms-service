@@ -75,6 +75,7 @@ public class RestSecurityConfig {
                         authorize -> authorize
                                 .requestMatchers(AUTH_WHITELIST).permitAll()
                                 .requestMatchers("/api/admin/**").hasAnyRole("ADMIN","SUPER_ADMIN")
+                                .requestMatchers("/api/user/change-password").authenticated()
                                 .requestMatchers("/api/user/**").hasAnyRole("ADMIN","SUPER_ADMIN")
                                 .requestMatchers("/api/role/**").hasAnyRole("ADMIN","SUPER_ADMIN")
                                 .anyRequest().authenticated())

@@ -16,13 +16,11 @@ public class RoleServiceImpl implements CrudService {
     public List<?> findAll() {
         return roleRepository.findAll();
     }
-
     @Override
     public Object findById(Object id) {
         return roleRepository.findById((Long) id)
                 .orElseThrow(()-> new EntityNotFoundException("Role not found"));
     }
-
     @Override
     public Object create(Object payload) {
         return null;

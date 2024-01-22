@@ -4,6 +4,7 @@ import com.radev.project.dao.RoleRepository;
 import com.radev.project.dao.UserRepository;
 import com.radev.project.dto.MetaData;
 import com.radev.project.dto.PageTemplate;
+import com.radev.project.dto.user.ChangePasswordRequest;
 import com.radev.project.dto.user.UserRegister;
 import com.radev.project.dto.user.UserUpdate;
 import com.radev.project.entity.Role;
@@ -13,6 +14,7 @@ import com.radev.project.service.abstraction.CrudService;
 import com.radev.project.service.abstraction.UserService;
 import jakarta.persistence.EntityExistsException;
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -38,13 +40,11 @@ public class UserServiceImp implements CrudService,UserService {
     public List<?> findAll() {
         return userRepository.findAll();
     }
-
     @Override
     public Object findById(Object id) {
         return userRepository.findById((Long) id)
                 .orElseThrow(() -> new EntityNotFoundException("User not found with id: " + id));
     }
-
     @Override
     public Object create(Object payload) {
         UserRegister userRegister = (UserRegister) payload;
@@ -136,5 +136,25 @@ public class UserServiceImp implements CrudService,UserService {
         result.set_meta(meta);
 
         return result;
+    }
+
+    @Override
+    @Transactional
+    public void changePassword(ChangePasswordRequest passwordRequest) {
+        String username = authService.getCurrentUser().getUsername();
+
+        User user = userRepository.findByUsername(username)
+                .orElseThrow(() -> new EntityNotFoundException("User not found for username: " + username));
+
+        // Validate password
+        if (!passwordEncoder.matches(passwordRequest.getCurrentPassword(), user.getPassword())) {
+            throw new RuntimeException("Invalid current password");
+        }
+
+        user.setPassword(passwordEncoder.encode(passwordRequest.getNewPassword()));
+        user.setUpdatedDate(LocalDateTime.now());
+        user.setUpdatedBy(username);
+
+        userRepository.save(user);
     }
 }

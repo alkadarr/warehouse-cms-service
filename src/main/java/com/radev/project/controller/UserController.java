@@ -1,6 +1,7 @@
 package com.radev.project.controller;
 
 import com.radev.project.dto.PageTemplate;
+import com.radev.project.dto.user.ChangePasswordRequest;
 import com.radev.project.dto.user.UserRegister;
 import com.radev.project.dto.user.UserUpdate;
 import com.radev.project.entity.User;
@@ -52,5 +53,10 @@ public class UserController {
     public ResponseEntity<String> softDeleteUser(@PathVariable Long userId) {
         crudService.delete(userId);
         return ResponseEntity.ok("User deleted successfully");
+    }
+    @PostMapping("/change-password")
+    public ResponseEntity<String> changePassword(@RequestBody ChangePasswordRequest passwordRequest) {
+        userService.changePassword(passwordRequest);
+        return ResponseEntity.ok("Password changed successfully");
     }
 }
