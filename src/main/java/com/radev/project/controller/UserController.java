@@ -4,9 +4,11 @@ import com.radev.project.dto.PageTemplate;
 import com.radev.project.dto.user.UserRegister;
 import com.radev.project.dto.user.UserUpdate;
 import com.radev.project.entity.User;
-import com.radev.project.service.UserService;
+import com.radev.project.service.abstraction.CrudService;
+import com.radev.project.service.abstraction.UserService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,10 +18,13 @@ import java.util.List;
 @RequestMapping("/api/user")
 public class UserController {
     @Autowired
+    @Qualifier("user")
+    private CrudService crudService;
+    @Autowired
     private UserService userService;
     @GetMapping
-    public List<User> findAll() {
-        return userService.findAll();
+    public List<?> findAll() {
+        return crudService.findAll();
     }
     @GetMapping("/paging")
     public PageTemplate getMoviesPaging(
@@ -33,15 +38,15 @@ public class UserController {
     }
     @PostMapping
     public User registerUser(@Valid @RequestBody UserRegister userRegister) {
-        return userService.create(userRegister);
+        return (User) crudService.create(userRegister);
     }
     @PutMapping
     public User updateUser(@Valid @RequestBody UserUpdate payload) {
-        return userService.update(payload);
+        return (User) crudService.update(payload);
     }
     @DeleteMapping("/{userId}")
     public ResponseEntity<String> softDeleteUser(@PathVariable Long userId) {
-        userService.delete(userId);
+        crudService.delete(userId);
         return ResponseEntity.ok("User deleted successfully");
     }
 }

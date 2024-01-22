@@ -2,7 +2,7 @@ package com.radev.project.service.implementation;
 
 import com.radev.project.dao.UserRepository;
 import com.radev.project.entity.User;
-import com.radev.project.service.AuthService;
+import com.radev.project.service.abstraction.AuthService;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException;

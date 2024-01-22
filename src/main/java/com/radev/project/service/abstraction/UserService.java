@@ -1,4 +1,4 @@
-package com.radev.project.service;
+package com.radev.project.service.abstraction;
 
 import com.radev.project.dto.PageTemplate;
 import com.radev.project.dto.user.UserRegister;
@@ -8,11 +8,5 @@ import com.radev.project.entity.User;
 import java.util.List;
 
 public interface UserService{
-    List<User> findAll();
     PageTemplate findAllPagination(String search, Long roleId, Integer page, Integer size, String sortBy, String sortType);
-    User create(UserRegister userRegister);
-
-    User update(UserUpdate userUpdate);
-
-    void delete(Long userId);
 }

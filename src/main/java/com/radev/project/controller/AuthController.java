@@ -2,7 +2,7 @@ package com.radev.project.controller;
 
 import com.radev.project.dto.user.LoginRequest;
 import com.radev.project.security.jwt.JwtUtils;
-import com.radev.project.service.AuthService;
+import com.radev.project.service.abstraction.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

@@ -1,8 +1,8 @@
 package com.radev.project.controller;
 
-import com.radev.project.entity.Role;
-import com.radev.project.service.RoleService;
+import com.radev.project.service.abstraction.CrudService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,9 +11,10 @@ import java.util.List;
 @RequestMapping("/api/role")
 public class RoleController {
     @Autowired
-    private RoleService roleService;
+    @Qualifier("role")
+    private CrudService crudService;
     @GetMapping
-    public List<Role> findAll() {
-        return roleService.findAll();
+    public List<?> findAll() {
+        return crudService.findAll();
     }
 }
