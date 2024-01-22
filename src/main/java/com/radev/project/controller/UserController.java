@@ -1,8 +1,8 @@
 package com.radev.project.controller;
 
-import com.radev.project.dtos.PageTemplate;
-import com.radev.project.dtos.user.UserRegister;
-import com.radev.project.dtos.user.UserUpdate;
+import com.radev.project.dto.PageTemplate;
+import com.radev.project.dto.user.UserRegister;
+import com.radev.project.dto.user.UserUpdate;
 import com.radev.project.entity.User;
 import com.radev.project.service.UserService;
 import jakarta.validation.Valid;
@@ -18,7 +18,7 @@ public class UserController {
     @Autowired
     private UserService userService;
     @GetMapping
-    public List<User> getAllMovies() {
+    public List<User> findAll() {
         return userService.findAll();
     }
     @GetMapping("/paging")

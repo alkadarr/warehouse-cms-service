@@ -12,11 +12,8 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Role extends BaseEntity{
-
-    @Enumerated(EnumType.STRING)
     @Column(length = 20)
-    private ERole name;
-
+    private String name;
     public Role(Long id) {
         super(id);
     }

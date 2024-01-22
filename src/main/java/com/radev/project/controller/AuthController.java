@@ -1,6 +1,6 @@
 package com.radev.project.controller;
 
-import com.radev.project.dtos.user.LoginRequest;
+import com.radev.project.dto.user.LoginRequest;
 import com.radev.project.security.jwt.JwtUtils;
 import com.radev.project.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;

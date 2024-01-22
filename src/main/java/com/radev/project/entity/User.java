@@ -13,11 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "[User]",
-        uniqueConstraints = {
-                @UniqueConstraint(columnNames = "username"),
-                @UniqueConstraint(columnNames = "email")
-        })
+@Table(name = "[User]")
 @Getter
 @Setter
 @SQLDelete(sql = "UPDATE [User] SET is_deleted = 'true', deleted_date = GETDATE() WHERE id = ?")

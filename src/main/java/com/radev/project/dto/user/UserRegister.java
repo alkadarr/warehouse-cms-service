@@ -1,4 +1,4 @@
-package com.radev.project.dtos.user;
+package com.radev.project.dto.user;
 
 import jakarta.persistence.Column;
 import jakarta.validation.constraints.Email;

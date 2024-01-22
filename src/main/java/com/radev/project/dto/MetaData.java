@@ -1,4 +1,4 @@
-package com.radev.project.dtos;
+package com.radev.project.dto;
 
 import lombok.Data;
 

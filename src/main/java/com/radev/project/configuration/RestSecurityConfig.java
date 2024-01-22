@@ -76,6 +76,7 @@ public class RestSecurityConfig {
                                 .requestMatchers(AUTH_WHITELIST).permitAll()
                                 .requestMatchers("/api/admin/**").hasAnyRole("ADMIN","SUPER_ADMIN")
                                 .requestMatchers("/api/user/**").hasAnyRole("ADMIN","SUPER_ADMIN")
+                                .requestMatchers("/api/role/**").hasAnyRole("ADMIN","SUPER_ADMIN")
                                 .anyRequest().authenticated())
                 .authenticationProvider(authenticationProvider())
                 .addFilterBefore(jwtFilter(), UsernamePasswordAuthenticationFilter.class)

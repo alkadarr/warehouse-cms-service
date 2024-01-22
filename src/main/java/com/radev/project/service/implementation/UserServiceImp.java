@@ -2,10 +2,10 @@ package com.radev.project.service.implementation;
 
 import com.radev.project.dao.RoleRepository;
 import com.radev.project.dao.UserRepository;
-import com.radev.project.dtos.MetaData;
-import com.radev.project.dtos.PageTemplate;
-import com.radev.project.dtos.user.UserRegister;
-import com.radev.project.dtos.user.UserUpdate;
+import com.radev.project.dto.MetaData;
+import com.radev.project.dto.PageTemplate;
+import com.radev.project.dto.user.UserRegister;
+import com.radev.project.dto.user.UserUpdate;
 import com.radev.project.entity.Role;
 import com.radev.project.entity.User;
 import com.radev.project.service.AuthService;

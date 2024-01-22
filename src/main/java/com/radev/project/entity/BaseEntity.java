@@ -14,19 +14,14 @@ public class BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
-
     @Column(name = "created_date", nullable = false, updatable = false)
     private LocalDateTime createdDate = LocalDateTime.now();
-
     @Column(name = "created_by", length = 50, updatable = false)
     private String createdBy;
-
     @Column(name = "updated_date")
     private LocalDateTime updatedDate;
-
     @Column(name = "updated_by", length = 50)
     private String updatedBy;
-
     public BaseEntity(Long id) {
         this.id = id;
     }

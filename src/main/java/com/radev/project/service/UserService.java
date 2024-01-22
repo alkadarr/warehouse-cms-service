@@ -1,8 +1,8 @@
 package com.radev.project.service;
 
-import com.radev.project.dtos.PageTemplate;
-import com.radev.project.dtos.user.UserRegister;
-import com.radev.project.dtos.user.UserUpdate;
+import com.radev.project.dto.PageTemplate;
+import com.radev.project.dto.user.UserRegister;
+import com.radev.project.dto.user.UserUpdate;
 import com.radev.project.entity.User;
 
 import java.util.List;
