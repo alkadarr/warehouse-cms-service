@@ -32,7 +32,7 @@ then you can build and run the project.
 
 - **Role Description:** Full access to all functionalities and data.
 - **Permissions:**
-    - CRUD operations on branches, products, storage gudangs, and transactions.
+    - CRUD operations on branches, products, warehouse storage, and transactions.
     - Access to all endpoints and functionalities.
     - User management (create, update, delete users).
 
@@ -42,29 +42,29 @@ then you can build and run the project.
 - **Permissions:**
     - CRUD operations on branches.
     - View and manage transactions.
-    - Limited product and storage gudang management.
+    - Limited product and warehouse storage management.
 
 ### Clerk (ROLE_CLERK)
 
 - **Role Description:** Limited access for transaction handling and basic data management.
 - **Permissions:**
     - Record transactions.
-    - View branch, product, and storage gudang information.
+    - View branch, product, and warehouse storage information.
     - Limited update/delete permissions.
 
 ### Auditor (ROLE_AUDITOR)
 
 - **Role Description:** Read-only access for auditing purposes.
 - **Permissions:**
-    - View all data (branches, products, storage gudangs, transactions).
+    - View all data (branches, products, warehouse storage, transactions).
     - No write or update permissions.
 
 ### Warehouse Staff (ROLE_WAREHOUSE_STAFF)
 
 - **Role Description:** Specific access for warehouse-related tasks.
 - **Permissions:**
-    - CRUD operations on storage gudangs.
-    - Record transactions related to storage gudangs.
+    - CRUD operations on warehouse storage.
+    - Record transactions related to warehouse storage.
 
 ### Search and Export Role (ROLE_SEARCH_EXPORT)
 
