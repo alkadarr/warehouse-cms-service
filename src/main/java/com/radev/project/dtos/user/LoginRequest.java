@@ -1,4 +1,4 @@
-package com.radev.project.dto;
+package com.radev.project.dtos.user;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

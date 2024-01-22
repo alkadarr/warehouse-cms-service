@@ -15,10 +15,10 @@ public class BaseEntity {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "created_date", nullable = false)
+    @Column(name = "created_date", nullable = false, updatable = false)
     private LocalDateTime createdDate = LocalDateTime.now();
 
-    @Column(name = "created_by", length = 50)
+    @Column(name = "created_by", length = 50, updatable = false)
     private String createdBy;
 
     @Column(name = "updated_date")

@@ -18,9 +18,24 @@ BEGIN
 		updated_by VARCHAR(50) NULL,
 		email VARCHAR(255) NULL,
 		[password] VARCHAR(MAX) NULL,
-		username VARCHAR(255) NULL
+		username VARCHAR(255) NULL,
+		is_deleted bit NOT NULL,
+		deleted_date DATETIME NULL
     )
 END
+
+GO
+
+INSERT INTO [dbo].[User]
+           ([created_by]
+           ,[created_date]
+           ,email
+           ,username
+           ,[password]
+           ,is_deleted)
+VALUES
+('SYSTEM',GETDATE(),'superadmin@initial.com','super admin','$2a$10$DUXvQ0ytJ1bmuUu6a0gQH.o9hHL5/56C35marvjEiFeaQNsK3iwsC','false')
+
 
 GO
 
@@ -38,15 +53,6 @@ END
 
 GO
 
-IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='User_Role' and xtype='U')
-CREATE TABLE [dbo].[User_Role](
-	[user_id] BIGINT FOREIGN KEY REFERENCES [dbo].[User](id),
-	[role_id] BIGINT FOREIGN KEY REFERENCES [dbo].[Role](id),
-	PRIMARY KEY ([user_id],[role_id])
-)
-
-GO
-
 INSERT INTO [dbo].[Role]
            ([created_by]
            ,[created_date]
@@ -59,6 +65,25 @@ VALUES
 ('SYSTEM',GETDATE(),'ROLE_AUDITOR'),
 ('SYSTEM',GETDATE(),'ROLE_WAREHOUSE_STAFF'),
 ('SYSTEM',GETDATE(),'ROLE_SEARCH_EXPORT')
+
+
+GO
+
+IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='User_Role' and xtype='U')
+CREATE TABLE [dbo].[User_Role](
+	[user_id] BIGINT FOREIGN KEY REFERENCES [dbo].[User](id),
+	[role_id] BIGINT FOREIGN KEY REFERENCES [dbo].[Role](id),
+	PRIMARY KEY ([user_id],[role_id])
+)
+
+GO
+
+INSERT INTO [dbo].[User_Role]
+           ([user_id]
+           ,[role_id])
+VALUES
+(1,1)
+
 
 
 
