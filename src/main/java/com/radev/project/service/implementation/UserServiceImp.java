@@ -12,8 +12,8 @@ import com.radev.project.entity.User;
 import com.radev.project.service.abstraction.AuthService;
 import com.radev.project.service.abstraction.CrudService;
 import com.radev.project.service.abstraction.UserService;
+import com.radev.project.service.exception._40x.UserNotFoundException;
 import jakarta.persistence.EntityExistsException;
-import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -43,7 +43,7 @@ public class UserServiceImp implements CrudService,UserService {
     @Override
     public Object findById(Object id) {
         return userRepository.findById((Long) id)
-                .orElseThrow(() -> new EntityNotFoundException("User not found with id: " + id));
+                .orElseThrow(() -> new UserNotFoundException("id",id));
     }
     @Override
     public Object create(Object payload) {
@@ -80,7 +80,7 @@ public class UserServiceImp implements CrudService,UserService {
         UserUpdate userUpdate = (UserUpdate) payload;
 
         var user = userRepository.findById(userUpdate.getId())
-                .orElseThrow(()-> new EntityNotFoundException("user not found for id : "+ userUpdate.getId()));
+                .orElseThrow(()-> new UserNotFoundException("id",userUpdate.getId()));
 
         if (!user.getUsername().equals(userUpdate.getUsername()) && userRepository.existsByUsername(userUpdate.getUsername())) {
             throw new EntityExistsException("Username is already used by another user!");
@@ -108,7 +108,7 @@ public class UserServiceImp implements CrudService,UserService {
     @Override
     public void delete(Object userId) {
         User user = userRepository.findById((Long) userId)
-                .orElseThrow(() -> new EntityNotFoundException("User not found with id: " + userId));
+                .orElseThrow(() -> new UserNotFoundException("id",userId));
         userRepository.delete(user);
     }
     @Override
@@ -144,7 +144,7 @@ public class UserServiceImp implements CrudService,UserService {
         String username = authService.getCurrentUser().getUsername();
 
         User user = userRepository.findByUsername(username)
-                .orElseThrow(() -> new EntityNotFoundException("User not found for username: " + username));
+                .orElseThrow(() -> new UserNotFoundException("username",username));
 
         // Validate password
         if (!passwordEncoder.matches(passwordRequest.getCurrentPassword(), user.getPassword())) {

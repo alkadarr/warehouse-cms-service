@@ -2,7 +2,7 @@ package com.radev.project.service.implementation;
 
 import com.radev.project.dao.RoleRepository;
 import com.radev.project.service.abstraction.CrudService;
-import jakarta.persistence.EntityNotFoundException;
+import com.radev.project.service.exception._40x.RoleNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +19,7 @@ public class RoleServiceImpl implements CrudService {
     @Override
     public Object findById(Object id) {
         return roleRepository.findById((Long) id)
-                .orElseThrow(()-> new EntityNotFoundException("Role not found"));
+                .orElseThrow(()-> new RoleNotFoundException("id",id));
     }
     @Override
     public Object create(Object payload) {
