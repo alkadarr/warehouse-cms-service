@@ -3,7 +3,7 @@ package com.radev.project.service.implementation;
 import com.radev.project.dao.UserRepository;
 import com.radev.project.entity.User;
 import com.radev.project.service.abstraction.AuthService;
-import jakarta.persistence.EntityNotFoundException;
+import com.radev.project.service.exception._40x.UserNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException;
 import org.springframework.security.core.Authentication;
@@ -17,9 +17,8 @@ public class AuthServiceImpl implements AuthService {
     @Override
     public User getCurrentUser() {
         var username = getCurrentUsernameLogin();
-        System.out.println(username);
         return userRepository.findByUsername(username)
-                .orElseThrow(()-> new EntityNotFoundException("user not found"));
+                .orElseThrow(()-> new UserNotFoundException("username",username));
     }
 
     @Override

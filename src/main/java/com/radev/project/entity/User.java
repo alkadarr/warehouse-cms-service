@@ -19,10 +19,13 @@ import java.util.List;
 @SQLDelete(sql = "UPDATE [User] SET is_deleted = 'true', deleted_date = GETDATE() WHERE id = ?")
 @Where(clause = "is_deleted = false")
 public class User extends BaseEntity{
+    @Column(name = "username")
     private String username;
     @Email
+    @Column(name = "email")
     private String email;
     @JsonIgnore
+    @Column(name = "password")
     private String password;
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(  name = "User_Role",

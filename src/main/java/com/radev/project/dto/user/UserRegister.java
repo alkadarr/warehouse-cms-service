@@ -18,9 +18,9 @@ public class UserRegister {
     @Size(min = 3, max = 20)
     @Column(unique = true)
     private String username;
+    @Email
     @NotBlank
     @Size(max = 50)
-    @Email
     @Column(unique = true)
     private String email;
     private List<Long> roleIds;

@@ -27,6 +27,8 @@ https://github.com/alkadarr/springboot-jwt-auth-basic-code/blob/cb4714c9cdaebb2e
 then you can build and run the project.
 
 ## User Roles
+<details>
+  <summary><strong>User Roles</strong></summary>
 
 ### Admin (ROLE_ADMIN)
 
@@ -72,12 +74,66 @@ then you can build and run the project.
 - **Permissions:**
     - Access to search functionality.
     - Ability to export data in various formats.
+</details>
 
 ## API Usage
 
-ON GOING
+<details>
+  <summary><strong>Warehouse Controller</strong></summary>
 
-### 
+- **GET /api/auth**
+  - Description: Retrieve user token description.
+- **POST /api/auth**
+  - Description: Generate token by username password.
+
+</details>
+
+<details>
+  <summary><strong>User Controller</strong></summary>
+
+- **GET /api/user**
+  - Description: Retrieve all users.
+- **GET /api/user/{userId}**
+  - Description: Retrieve a user by ID.
+- **GET /api/user/paging**
+  - Description: Retrieve paginated user data.
+- **POST /api/user**
+  - Description: Register a new user.
+- **PUT /api/user**
+  - Description: Update user information.
+- **DELETE /api/user/{userId}**
+  - Description: Soft delete a user by ID.
+
+</details>
+
+<details>
+  <summary><strong>Role Controller</strong></summary>
+
+- **GET /api/role**
+  - Description: Retrieve list of all roles.
+- **GET /api/role/{roleId}**
+  - Description: Retrieve a role by ID.
+  
+</details>
+
+<details>
+  <summary><strong>Warehouse Controller</strong></summary>
+
+- **GET /api/warehouse**
+  - Description: Retrieve all warehouses.
+- **GET /api/warehouse/{warehouseId}**
+  - Description: Retrieve a warehouse by ID.
+- **GET /api/warehouse/paging**
+  - Description: Retrieve paginated warehouse data.
+- **POST /api/warehouse**
+  - Description: Register a new warehouse.
+- **PUT /api/warehouse**
+  - Description: Update warehouse information.
+- **DELETE /api/warehouse/{warehouseId}**
+  - Description: Soft delete a warehouse by ID.
+
+</details>
+
 
 ## Test the application
 In this application, you are able to access swagger-ui.html for the documentation. Here's the format

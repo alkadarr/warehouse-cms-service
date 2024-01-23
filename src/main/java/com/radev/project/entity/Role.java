@@ -12,7 +12,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Role extends BaseEntity{
-    @Column(length = 20)
+    @Column(name = "name",length = 20)
     private String name;
     public Role(Long id) {
         super(id);

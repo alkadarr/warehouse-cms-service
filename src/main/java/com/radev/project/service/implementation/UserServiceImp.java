@@ -46,6 +46,7 @@ public class UserServiceImp implements CrudService,UserService {
                 .orElseThrow(() -> new UserNotFoundException("id",id));
     }
     @Override
+    @Transactional
     public Object create(Object payload) {
         UserRegister userRegister = (UserRegister) payload;
 

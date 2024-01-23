@@ -84,6 +84,38 @@ INSERT INTO [dbo].[User_Role]
 VALUES
 (1,1)
 
+GO
+
+CREATE TABLE Locations (
+    [id] INT PRIMARY KEY IDENTITY(1,1),
+	[city] [varchar](255) NULL,
+	[state] [varchar](255) NULL,
+	[country] [varchar](255) NULL,
+	[address] [varchar](255) NULL,
+	[zip_code] [varchar](255) NULL,
+	[created_date] [datetime] NOT NULL,
+	[created_by] [varchar](50) NULL,
+	[updated_date] [datetime2](6) NULL,
+	[updated_by] [varchar](50) NULL
+);
+
+GO
+
+CREATE TABLE Warehouses (
+    [id] INT PRIMARY KEY IDENTITY(1,1),
+    [name] [varchar](255) NOT NULL,
+	[location_id] [int] NOT NULL,
+	[capacity] [int] NULL,
+	[created_date] [datetime] NOT NULL,
+	[created_by] [varchar](50) NULL,
+	[updated_date] [datetime2](6) NULL,
+	[updated_by] [varchar](50) NULL,
+	[deleted_date] [datetime2](6) NULL,
+	[is_deleted] [bit] NULL
+);
+
+GO
+
 
 
 
