@@ -7,7 +7,6 @@ import com.radev.project.dto.PageTemplate;
 import com.radev.project.dto.warehouse.WarehouseRegister;
 import com.radev.project.dto.warehouse.WarehouseUpdate;
 import com.radev.project.entity.Location;
-import com.radev.project.entity.User;
 import com.radev.project.entity.Warehouse;
 import com.radev.project.service.abstraction.AuthService;
 import com.radev.project.service.abstraction.CrudService;
@@ -51,6 +50,7 @@ public class WarehouseServiceImpl implements CrudService, WarehouseService {
         var newWarehouse = new Warehouse(
                 warehouseRegister.getName(),
                 location,
+                warehouseRegister.getCategory(),
                 warehouseRegister.getCapacity()
         );
         newWarehouse.setCreatedBy(authService.getCurrentUser().getId().toString());
@@ -64,6 +64,7 @@ public class WarehouseServiceImpl implements CrudService, WarehouseService {
                 .orElseThrow(()-> new WarehouseNotFoundException("id",update.getId()));
         warehouse.setName(update.getName());
         warehouse.setCapacity(update.getCapacity());
+        warehouse.setCategory(update.getCategory());
 
         Location warehouseLocation = warehouse.getLocation();
         warehouseLocation.setCity(update.getLocation().getCity());

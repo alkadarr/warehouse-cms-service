@@ -34,8 +34,8 @@ INSERT INTO [dbo].[User]
            ,[password]
            ,is_deleted)
 VALUES
-('SYSTEM',GETDATE(),'superadmin@initial.com','super admin','$2a$10$DUXvQ0ytJ1bmuUu6a0gQH.o9hHL5/56C35marvjEiFeaQNsK3iwsC','false')
-
+('SYSTEM',GETDATE(),'superadmin@initial.com','super admin','$2a$10$Ah3EOC9BHsKkeqjGH6ECj.3Oh1yjVltKSSmW9pFcOo.GNoBVvZhp2','false')
+-- password for this user is 12345678
 
 GO
 
@@ -86,7 +86,7 @@ VALUES
 
 GO
 
-CREATE TABLE Locations (
+CREATE TABLE [dbo].[Locations] (
     [id] INT PRIMARY KEY IDENTITY(1,1),
 	[city] [varchar](255) NULL,
 	[state] [varchar](255) NULL,
@@ -101,12 +101,14 @@ CREATE TABLE Locations (
 
 GO
 
-CREATE TABLE Warehouses (
-    [id] INT PRIMARY KEY IDENTITY(1,1),
-    [name] [varchar](255) NOT NULL,
-	[location_id] [int] NOT NULL,
+CREATE TABLE [dbo].[Warehouses](
+	[id] [int] IDENTITY(1,1) NOT NULL PRIMARY KEY,
+	[name] [varchar](255) NOT NULL,
+	[location_id] [int] NOT NULL FOREIGN KEY([location_id]) REFERENCES [dbo].[Locations] ([id]),
+	[category] [varchar(50)] NOT NULL DEFAULT ('BRANCH')
 	[capacity] [int] NULL,
-	[created_date] [datetime] NOT NULL,
+	[is_active] [bit] NOT NULL DEFAULT ('true'),
+	[created_date] [datetime] NOT NULL DEFAULT (GETDATE()),
 	[created_by] [varchar](50) NULL,
 	[updated_date] [datetime2](6) NULL,
 	[updated_by] [varchar](50) NULL,

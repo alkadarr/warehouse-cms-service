@@ -6,5 +6,6 @@ import lombok.Data;
 public class WarehouseRegister {
     private String name;
     private LocationDto location;
+    private String category;
     private Integer capacity;
 }
