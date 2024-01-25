@@ -78,9 +78,9 @@ public class WarehouseServiceImpl implements CrudService, WarehouseService {
         return warehouseRepository.save(warehouse);
     }
     @Override
-    public void delete(Object userId) {
-        Warehouse warehouse = warehouseRepository.findById((Long) userId)
-                .orElseThrow(() -> new WarehouseNotFoundException("id",userId));
+    public void delete(Object id) {
+        Warehouse warehouse = warehouseRepository.findById((Long) id)
+                .orElseThrow(() -> new WarehouseNotFoundException("id",id));
         warehouseRepository.delete(warehouse);
     }
 
@@ -108,5 +108,14 @@ public class WarehouseServiceImpl implements CrudService, WarehouseService {
         result.set_meta(meta);
 
         return result;
+    }
+    @Override
+    public Warehouse deactivateOrActivateWarehouse(Long id, boolean isActive) {
+        Warehouse warehouse = warehouseRepository.findById(id)
+                .orElseThrow(() -> new WarehouseNotFoundException("id",id));
+        warehouse.setActive(isActive);
+        warehouse.setUpdatedDate(LocalDateTime.now());
+        warehouse.setUpdatedBy(authService.getCurrentUser().getId().toString());
+        return warehouseRepository.save(warehouse);
     }
 }

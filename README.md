@@ -121,7 +121,7 @@ then you can build and run the project.
 
 - **GET /api/warehouse**
   - Description: Retrieve all warehouses.
-- **GET /api/warehouse/{warehouseId}**
+- **GET /api/warehouse/{id}**
   - Description: Retrieve a warehouse by ID.
 - **GET /api/warehouse/paging**
   - Description: Retrieve paginated warehouse data.
@@ -129,8 +129,12 @@ then you can build and run the project.
   - Description: Register a new warehouse.
 - **PUT /api/warehouse**
   - Description: Update warehouse information.
-- **DELETE /api/warehouse/{warehouseId}**
+- **DELETE /api/warehouse/{id}**
   - Description: Soft delete a warehouse by ID.
+- **PATCH /api/warehouse/{id}/deactivate**
+  - Description: deactivate warehouse by ID.
+- **PATCH /api/warehouse/{id}/activate**
+  - Description: activate warehouse by ID.
 
 </details>
 
