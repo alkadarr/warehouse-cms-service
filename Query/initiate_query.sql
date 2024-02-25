@@ -116,6 +116,37 @@ CREATE TABLE Warehouses (
 
 GO
 
+-- category
+CREATE TABLE Category (
+    [id] INT PRIMARY KEY IDENTITY(1,1),
+    [name] VARCHAR(255) NOT NULL,
+    [entity] VARCHAR(255) NULL
+);
+
+GO
+
+-- product
+CREATE TABLE Product (
+    [id] BIGINT PRIMARY KEY IDENTITY(1,1),
+    [name] VARCHAR(255) NOT NULL,
+    [description] VARCHAR(1000),
+    [price] DECIMAL(10, 2) NOT NULL,
+    [gender] VARCHAR(50),
+    category_id INT,
+    FOREIGN KEY (category_id) REFERENCES Category(id)
+);
+
+GO
+
+-- Product Stock
+CREATE TABLE Product_Stock (
+    [id] BIGINT PRIMARY KEY IDENTITY(1,1),
+    product_id BIGINT,
+    warehouse_id INT,
+    stock_quantity INT NOT NULL,
+    FOREIGN KEY (product_id) REFERENCES Product(id),
+    FOREIGN KEY (warehouse_id) REFERENCES Warehouses(id)
+);
 
 
 

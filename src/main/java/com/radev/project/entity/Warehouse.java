@@ -1,7 +1,7 @@
 package com.radev.project.entity;
 
+import com.radev.project.entity.general.BaseEntity;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @SQLDelete(sql = "UPDATE Warehouses SET is_deleted = 'true', deleted_date = GETDATE() WHERE id = ?")
 @Where(clause = "is_deleted = false")
-public class Warehouse extends BaseEntity{
+public class Warehouse extends BaseEntity {
     @Column(name = "name")
     private String name;
     @OneToOne

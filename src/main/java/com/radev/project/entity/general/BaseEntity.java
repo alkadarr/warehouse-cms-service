@@ -1,4 +1,4 @@
-package com.radev.project.entity;
+package com.radev.project.entity.general;
 
 import jakarta.persistence.*;
 import lombok.*;

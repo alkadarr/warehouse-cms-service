@@ -1,6 +1,7 @@
 package com.radev.project.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.radev.project.entity.general.BaseEntity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import lombok.Getter;
@@ -18,7 +19,7 @@ import java.util.List;
 @Setter
 @SQLDelete(sql = "UPDATE [User] SET is_deleted = 'true', deleted_date = GETDATE() WHERE id = ?")
 @Where(clause = "is_deleted = false")
-public class User extends BaseEntity{
+public class User extends BaseEntity {
     @Column(name = "username")
     private String username;
     @Email
