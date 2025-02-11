@@ -34,8 +34,8 @@ INSERT INTO [dbo].[User]
            ,[password]
            ,is_deleted)
 VALUES
-('SYSTEM',GETDATE(),'superadmin@initial.com','super admin','$2a$10$DUXvQ0ytJ1bmuUu6a0gQH.o9hHL5/56C35marvjEiFeaQNsK3iwsC','false')
-
+('SYSTEM',GETDATE(),'superadmin@initial.com','superadmin','$2a$10$B4IVUyXsJ7xZbHG27KMSqugXq9g7hHRt4yIBx9AG.hHl1wHBmLdwS','false')
+-- password for this user is superadmin
 
 GO
 

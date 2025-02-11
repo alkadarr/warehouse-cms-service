@@ -8,7 +8,6 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="springboot-jwt-auth-basic-code" />
-        <module name="warehouse-cms-service" />
         <module name="springboot-simple-basic-code" />
       </profile>
     </annotationProcessing>
